@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    max-width: 700px;
+    margin: 0 auto;
+    margin-top: 100px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 50px;
+}
+.search{
+    padding: 10px ;
+    border-radius: 15px;
+    border: 1px solid slategrey;
+
+
+}
+.search + p{
+    position: absolute;
+    left: 200px;
+    display: none;
+}
+.info-container{
+    display: none;
+     max-width: 250px;
+     background-color: white;
+     border-radius: 20px;
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+     padding: 20px;
+     gap: 20px;
+}
+.best__pokemons{
+    color: aliceblue;
+    background-color: gray;
+
+}
