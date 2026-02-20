@@ -1,21 +1,25 @@
 import { refs } from "./refs.js";
 import { getPokemonInfo } from "./getPokemon.js";
 
-
 export async function addToBest() {
   const data = await getPokemonInfo(refs.inputForSearchPokemons.value);
-  let favorites = JSON.parse(localStorage.getItem("favoritePokemons")) || [];
+
+  const favorites = JSON.parse(localStorage.getItem("favoritePokemons")) || [];
 
   refs.addBestBtn.style.display = favorites.includes(data.name)
     ? "none"
     : "block";
 
   refs.addBestBtn.onclick = () => {
-    if (!favorites.includes(data.name)) {
-      console.log("idusfb");
-      
-      favorites.push(data.name);
-      localStorage.setItem("favoritePokemons", JSON.stringify(favorites));
+    const currentFavorites =
+      JSON.parse(localStorage.getItem("favoritePokemons")) || [];
+
+    if (!currentFavorites.includes(data.name)) {
+      currentFavorites.push(data.name);
+      localStorage.setItem(
+        "favoritePokemons",
+        JSON.stringify(currentFavorites)
+      );
 
       renderFavorite(data.name);
       refs.addBestBtn.style.display = "none";
@@ -23,9 +27,7 @@ export async function addToBest() {
   };
 }
 
-
 export async function renderFavorite(name) {
-
   const p = document.createElement("p");
   p.innerText = name;
 
@@ -39,7 +41,8 @@ export async function renderFavorite(name) {
     p.remove();
     deleteBtn.remove();
 
-    const favorites = JSON.parse(localStorage.getItem("favoritePokemons")) || [];
+    const favorites =
+      JSON.parse(localStorage.getItem("favoritePokemons")) || [];
     const updated = favorites.filter((item) => item !== name);
     localStorage.setItem("favoritePokemons", JSON.stringify(updated));
     refs.addBestBtn.style.display = "block";
