@@ -14,8 +14,7 @@ refs.searchBtn.addEventListener("click", async () => {
       infoText.appendChild(elem);
     });
 
-    refs.info.style.display = "flex";
-    refs.info.style.flexDirection = "column";
+  
 
     addToBest();
   } catch (error) {
